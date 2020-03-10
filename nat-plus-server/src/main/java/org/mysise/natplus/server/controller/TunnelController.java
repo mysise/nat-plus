@@ -33,7 +33,7 @@ public class TunnelController {
      * @author fanwenjie
      * @since 2020/3/10 0:01
      */
-    @PostMapping("/")
+    @PostMapping("")
     public Integer add(@RequestBody TunnelRequest request){
         return tunnelService.save(request);
     }
@@ -47,7 +47,7 @@ public class TunnelController {
      * @author fanwenjie
      * @since 2020/3/10 0:45
      */
-    @GetMapping("/")
+    @GetMapping("")
     public List<TunnelResponse> listTunnel(TunnelSearch request){
         return tunnelService.listTunnel(request);
     }

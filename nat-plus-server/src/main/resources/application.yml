@@ -43,7 +43,7 @@ spring:
       max-wait: 60000
       test-on-return: false
   application:
-    name: demo1-dubbo-provider
+    name: nat-plus-server
   aop:
     auto: true
     proxy-target-class: true

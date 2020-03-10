@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF-->
+<Configuration status="OFF" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} -&#45;&#45; [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+        <Property name="LOG_FILE_PATH">./logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <!-- Rolling File Appender -->
+        <RollingFile name="FileAppender" fileName="${LOG_FILE_PATH}/spring-boot-log4j2-demo.log"
+                     filePattern="${LOG_FILE_PATH}/nat-plus-server-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <!--<JsonLayout complete="false" compact="true">
+                <KeyValuePair key="timestamp" value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}" />
+            </JsonLayout>-->
+            <Filters>
+                <!-- 只记录ERROR级别日志信息，程序打印的其他信息不会被记录 -->
+                <!-- 此level设置的日志级别，是过滤日志文件中打印出的日志信息，和Root的level有所区别 -->
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+            </Filters>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+                <!-- 每天创建一个日志文件 -->
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!-- 用来单独指定日志的形式，比如要为指定包下的class指定不同的日志级别等。 -->
+        <!--<Logger name="com.easyjijin.demo.springbootlog4j2" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender"/>
+        </Logger>-->
+
+        <!-- AsyncRoot - 异步记录日志 - 需要LMAXDisruptor的支持 -->
+        <!-- <AsyncRootlevel="info" additivity="false">
+          <AppenderRef ref="Console"/>
+          <AppenderRef ref="FileAppender"/>
+        </AsyncRoot> -->
+
+        <!-- All < Trace < Debug < Info < Warn < Error < Fatal < OFF. -->
+        　　　　 <!-- 程序会打印高于或等于所设置级别的日志，设置的日志等级越高，打印出来的日志就越少。-->
+        <!-- 此level设置的日志级别，是过滤项目中输出的日志信息，和ThresholdFilter的level有所区别 -->
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

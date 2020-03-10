@@ -112,7 +112,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
             DataPacket dataPacket = (DataPacket) msg;
             Channel channel = channelHandlerMap.get(dataPacket.getChannelId());
             channel.writeAndFlush(dataPacket.getBytes());
-            System.out.println(JSON.toJSONString(dataPacket));
+//            System.out.println(JSON.toJSONString(dataPacket));
         }
     }
 }

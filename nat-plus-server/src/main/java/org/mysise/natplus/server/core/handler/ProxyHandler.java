@@ -25,8 +25,11 @@ import java.net.InetSocketAddress;
 @Slf4j
 public class ProxyHandler extends ChannelInboundHandlerAdapter {
 
-    @Autowired
     private ITunnelService iTunnelService;
+
+    public ProxyHandler(ITunnelService iTunnelService) {
+        this.iTunnelService = iTunnelService;
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

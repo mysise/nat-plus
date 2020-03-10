@@ -12,6 +12,7 @@ import org.mysise.natplus.common.session.Session;
 import org.mysise.natplus.common.utils.SessionUtil;
 import org.mysise.natplus.server.service.ITunnelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -30,8 +31,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
 
-    @Autowired
     private ITunnelService iTunnelService;
+
+    public ServerHandler(ITunnelService iTunnelService) {
+        this.iTunnelService = iTunnelService;
+    }
+
     /**
      * <p>
      *  数据响应
