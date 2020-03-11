@@ -1,0 +1,2 @@
+INSERT INTO nat_plus.tunnel (id, token, name, uid, type, create_time, update_time, host_name) VALUES (1, '123456', 'mysql', 1, 1, '2020-03-11 00:06:03', '2020-03-11 00:06:07', 'netty.host.com');
+INSERT INTO nat_plus.tunnel (id, token, name, uid, type, create_time, update_time, host_name) VALUES (2, '1212', '1212', 1, 1, '2020-03-11 00:30:30', '2020-03-11 00:30:32', 'q1q');
