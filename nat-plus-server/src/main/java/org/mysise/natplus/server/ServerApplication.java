@@ -18,6 +18,7 @@ import org.mysise.natplus.server.service.impl.TunnelServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * <p>
@@ -30,6 +31,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @MapperScan(value = "org.mysise.natplus.server.mapper")
 @ComponentScan(basePackages = {"org.mysise"})
+@PropertySource(value={"classpath:config.properties"})
 public class ServerApplication {
 
 

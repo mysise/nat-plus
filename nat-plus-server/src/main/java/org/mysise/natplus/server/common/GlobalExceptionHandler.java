@@ -59,7 +59,7 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object body, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         if (body instanceof Result){
             return body;
-        }else if (body instanceof String) {
+        }else if (body instanceof String || null == body) {
             // 为什么要特殊处理String https://jpanj.com/2018/SpringBoot-%E4%B8%AD%E7%BB%9F%E4%B8%80%E5%8C%85%E8%A3%85%E5%93%8D%E5%BA%94/
             return objectMapper.writeValueAsString(new Result<>(body));
         }
