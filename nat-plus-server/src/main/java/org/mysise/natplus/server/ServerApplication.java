@@ -4,6 +4,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mysise.natplus.common.codec.PacketDecoder;
 import org.mysise.natplus.common.codec.PacketEncoder;
@@ -14,7 +15,6 @@ import org.mysise.natplus.server.core.handler.ServerHandler;
 import org.mysise.natplus.server.core.net.TcpServer;
 import org.mysise.natplus.server.service.ITunnelService;
 import org.mysise.natplus.server.service.impl.TunnelServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -47,6 +47,8 @@ public class ServerApplication {
                 nioSocketChannel.pipeline().addLast(new PacketDecoder());
                 // 编码
                 nioSocketChannel.pipeline().addLast(new PacketEncoder());
+                //心跳处理
+                nioSocketChannel.pipeline().addLast(new IdleStateHandler(60, 30, 0));
                 // 处理器
                 nioSocketChannel.pipeline().addLast(new ServerHandler(iTunnelService));
             }
