@@ -2,6 +2,7 @@ package org.mysise.natplus.server.mapper;
 
 import org.mysise.natplus.server.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author fanwenjie
  * @since 2020-03-09
  */
+@Component
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }
