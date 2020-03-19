@@ -12,4 +12,4 @@
 **启动**
 
     服务端： java -jar xxx.jar -server.port xxxx 
-    客户端：java -jar xxx.jar -server_addr 127.0.0.1 -server_port 10240 -token 123456 -proxy_addr 127.0.0.1 -proxy_port 3306 -remote_port 80
+    客户端：java -jar xxx.jar -server_addr 127.0.0.1 -server_port 10240 -token 123456 -proxy_addr 127.0.0.1 -proxy_port 3306
