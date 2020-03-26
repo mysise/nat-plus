@@ -13,4 +13,15 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISysUserService extends IService<SysUser> {
 
+    /**
+     * 根据email和密码获取用户
+     *
+     * @param email
+     * @param passWord
+     * @return SysUser
+     * @author haizi
+     * @since 2020/3/12
+     */
+
+    SysUser getUser(String email, String passWord);
 }

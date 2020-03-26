@@ -30,7 +30,7 @@ public class ClientApplication {
         options.addOption("token", true, "nat-plus server password");
         options.addOption("proxy_addr", true, "Proxy server address");
         options.addOption("proxy_port", true, "Proxy server port");
-        options.addOption("remote_port", true, "Proxy server remote port");
+//        options.addOption("remote_port", true, "Proxy server remote port");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options, args);
@@ -66,11 +66,11 @@ public class ClientApplication {
                 System.out.println("proxy_port cannot be null");
                 return;
             }
-            String remotePort = cmd.getOptionValue("remote_port");
-            if (remotePort == null) {
-                System.out.println("remote_port cannot be null");
-                return;
-            }
+//            String remotePort = cmd.getOptionValue("remote_port");
+//            if (remotePort == null) {
+//                System.out.println("remote_port cannot be null");
+//                return;
+//            }
 
             TcpConnection connection = new TcpConnection();
             connection.connect(serverAddress, Integer.parseInt(serverPort), new ChannelInitializer<NioSocketChannel>() {
